@@ -1,11 +1,13 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 const useDrag = () => {
   const elementRef = useRef(null);
   const posRef = useRef({ pos1: 0, pos2: 0, pos3: 0, pos4: 0 });
+  const [ dragging, setDragging ] = useState(false);
 
   const onMouseDownHandler = (e) => {
     e.preventDefault();
+    setDragging(true);
     // get the mouse cursor position at startup:
     posRef.current.pos3 = elementRef.current.clientX;
     posRef.current.pos4 = elementRef.current.clientY;
@@ -38,6 +40,7 @@ const useDrag = () => {
   }
 
   function closeDragElement() {
+    setDragging(false);
     // stop moving when mouse button is released:
     document.removeEventListener('mouseup', closeDragElement);
     document.removeEventListener('mousemove', elementDrag);
@@ -46,6 +49,7 @@ const useDrag = () => {
   return {
     elementRef,
     onMouseDownHandler,
+    dragging,
   };
 };
 

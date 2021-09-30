@@ -15,12 +15,14 @@ export const treeTraversal = (root, fn, childrenKey = 'children') => {
       return undefined;
     }
 
-    return children.find((child) => { return fn(aux(child)); });
+    return children
+      .map((child) => { return aux(child); })
+      .find((child) => { return fn(child); });
   };
 
   return aux(root);
 };
 
 export const findNodeById = (root, nodeId) => {
-  return treeTraversal(root, (node) => { return node.id === nodeId; }, 'nodes');
+  return treeTraversal(root, (node) => { return node?.id === nodeId; }, 'nodes');
 };

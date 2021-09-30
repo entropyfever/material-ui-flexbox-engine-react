@@ -1,7 +1,7 @@
 
 export const example = {
   root: {
-    id: 'root',
+    id: 'engineRoot',
     nodes: [
       {
         id: 'yolo',

@@ -13,6 +13,7 @@ export const NodeProvider = (
     setNodeById,
     addChildToNode,
     setActiveNode,
+    activeNodeId,
   } = useMain();
 
   const setNode = (v) => {
@@ -32,6 +33,7 @@ export const NodeProvider = (
     setNode,
     addChild,
     setActive,
+    activeNodeId,
   };
 
   return (
@@ -47,9 +49,11 @@ export const useNode = () => {
     setNode,
     addChild,
     setActive,
+    activeNodeId,
   } = useContext(NodeContext);
 
   const isLeaf = !node.nodes || !node.nodes.length || 0 === node.nodes.length;
+  const isActive = activeNodeId === node.id;
 
   return {
     node,
@@ -57,5 +61,6 @@ export const useNode = () => {
     addChild,
     setActive,
     isLeaf,
+    isActive,
   };
 };
