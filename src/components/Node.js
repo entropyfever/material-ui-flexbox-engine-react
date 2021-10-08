@@ -1,28 +1,6 @@
 import React, { useState } from 'react';
-import { Box, makeStyles } from '@material-ui/core';
-import clsx from 'clsx';
+import Box from '@mui/material/Box';
 import { NodeProvider, useNode } from '../hooks-providers/node-provider';
-
-const useStyles = makeStyles(() => {
-  return {
-    root: {
-      minHeight: '300px',
-      minWidth: '300px',
-      backgroundColor: 'white',
-      border: `1px solid ${ '#aeaeae' }`,
-      margin: '10px',
-      transition: 'all .2s ease-in-out',
-    },
-    hover: {
-      backgroundColor: '#f8f8f8',
-      transform: 'scale(1.001)',
-    },
-    active: {
-      backgroundColor: '#d2fffb',
-      transform: 'scale(1.01)',
-    },
-  };
-});
 
 const LeafResolver = ({ node, setActive, isActive }) => {
   const [ hover, setHover ] = useState(false);
@@ -37,14 +15,29 @@ const LeafResolver = ({ node, setActive, isActive }) => {
     setHover(false);
   };
 
-  const classes = useStyles();
   return (
     <Box
       id={ node.id }
       component='div'
       onMouseOver={ onMouseOver }
       onMouseOut={ onMouseOut }
-      className={ clsx(classes.root, isActive ? classes.active : '', hover ? classes.hover : '') }
+      sx={ {
+        minHeight: '300px',
+        minWidth: '300px',
+        backgroundColor: 'white',
+        border: `1px solid ${ '#aeaeae' }`,
+        margin: '10px',
+        transition: 'all .2s ease-in-out',
+        ...(hover) && {
+          backgroundColor: '#f8f8f8',
+          transform: 'scale(1.001)',
+        },
+        ...isActive && {
+          backgroundColor: '#d2fffb',
+          transform: 'scale(1.01)',
+        },
+
+      } }
       onClick={ (e) => { e.stopPropagation(); return setActive(); } }
     >
       {node.id}
@@ -65,14 +58,29 @@ const ParentResolver = ({ node, setActive, isActive, children }) => {
     setHover(false);
   };
 
-  const classes = useStyles();
   return (
     <Box
       id={ node.id }
       component='div'
       onMouseOver={ onMouseOver }
       onMouseOut={ onMouseOut }
-      className={ clsx(classes.root, isActive ? classes.active : '', hover ? classes.hover : '') }
+      sx={ {
+        minHeight: '300px',
+        minWidth: '300px',
+        backgroundColor: 'white',
+        border: `1px solid ${ '#aeaeae' }`,
+        margin: '10px',
+        transition: 'all .2s ease-in-out',
+        ...(hover) && {
+          backgroundColor: '#f8f8f8',
+          transform: 'scale(1.001)',
+        },
+        ...isActive && {
+          backgroundColor: '#d2fffb',
+          transform: 'scale(1.01)',
+        },
+
+      } }
       onClick={ (e) => { e.stopPropagation(); return setActive(); } }
     >
       {children}

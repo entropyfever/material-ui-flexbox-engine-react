@@ -1,11 +1,15 @@
 import React from 'react';
-import { CardContent, CardHeader, Divider, makeStyles, Typography } from '@material-ui/core';
-import Box from '@material-ui/core/Box';
-import Card from '@material-ui/core/Card';
 import clsx from 'clsx';
-import Button from '@material-ui/core/Button';
-import useDrag from '../hooks-providers/drag-hook';
+import makeStyles from '@mui/material/styles/makeStyles';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import Divider from '@mui/material/Divider';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import { useMain } from '../hooks-providers/main-provider';
+import useDrag from '../hooks-providers/drag-hook';
 
 const useStyles = makeStyles((theme) => {
   return {

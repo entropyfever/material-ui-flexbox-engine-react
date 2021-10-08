@@ -4,7 +4,7 @@ export const example = {
     id: 'engineRoot',
     nodes: [
       {
-        id: 'yolo',
+        id: 'first-child',
         nodes: [],
       },
       {
